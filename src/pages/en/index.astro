@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/Navigation.astro';
-import Hero from '../components/Hero.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Hero from '../../components/Hero.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
-import { useTranslations, getLocalizedPath } from '../i18n/utils';
+import { useTranslations, getLocalizedPath } from '../../i18n/utils';
 
-const t = useTranslations('id');
+const t = useTranslations('en');
 
-// Get featured projects in Indonesian
+// Get featured projects in English
 const allProjects = await getCollection('projects', ({ data }) => {
-  return data.lang === 'id' && data.featured === true;
+  return data.lang === 'en' && data.featured === true;
 });
 
 const featuredProjects = allProjects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
@@ -19,8 +19,8 @@ const featuredProjects = allProjects.sort((a, b) => b.data.date.valueOf() - a.da
 
 <BaseLayout
   title="Hermansyah - Backend & Fullstack Developer"
-  description="Saya adalah seorang backend developer yang berpengalaman dengan Golang, Python, dan Rust, serta fullstack developer untuk aplikasi Laravel."
-  lang="id"
+  description="I am an experienced backend developer with Golang, Python, and Rust, as well as a fullstack developer for Laravel applications."
+  lang="en"
 >
   <Navigation />
   <Hero />
@@ -32,7 +32,7 @@ const featuredProjects = allProjects.sort((a, b) => b.data.date.valueOf() - a.da
         {t('projects.featured')}
       </h2>
       <p class="text-lg text-zinc-600 dark:text-zinc-400">
-        Beberapa proyek unggulan yang telah saya kerjakan
+        Some of the featured projects I've worked on
       </p>
     </div>
     
@@ -42,14 +42,14 @@ const featuredProjects = allProjects.sort((a, b) => b.data.date.valueOf() - a.da
           title={project.data.title}
           description={project.data.description}
           techStack={project.data.techStack}
-          href={`/projects/${project.slug}`}
+          href={`/en/projects/${project.slug}`}
         />
       ))}
     </div>
     
     <div class="text-center">
       <a
-        href={getLocalizedPath('/projects', 'id')}
+        href={getLocalizedPath('/projects', 'en')}
         class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
       >
         {t('projects.viewAll')}

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('id');
+
+const skills = {
+  backend: ['Golang', 'Python', 'Rust', 'Node.js'],
+  fullstack: ['Laravel', 'PHP', 'Livewire', 'Inertia.js'],
+  database: ['PostgreSQL', 'MySQL', 'Redis', 'MongoDB'],
+  devops: ['Docker', 'Kubernetes', 'CI/CD', 'AWS'],
+  tools: ['Git', 'Linux', 'Nginx', 'RabbitMQ']
+};
+---
+
+<BaseLayout
+  title={`${t('about.title')} - Hermansyah`}
+  description="Backend developer dengan pengalaman di Golang, Python, Rust, dan fullstack developer untuk aplikasi Laravel."
+  lang="id"
+>
+  <Navigation />
+  
+  <main class="pt-24 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold mb-4 gradient-text">
+          {t('about.title')}
+        </h1>
+        <p class="text-lg text-zinc-600 dark:text-zinc-400">
+          Backend & Fullstack Developer
+        </p>
+      </div>
+      
+      <div class="prose prose-lg dark:prose-invert mx-auto mb-16">
+        <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+          Saya adalah seorang developer yang passionate dalam membangun aplikasi backend yang scalable dan performant. 
+          Dengan pengalaman di berbagai bahasa pemrograman seperti Golang, Python, dan Rust, saya fokus pada 
+          pengembangan sistem yang robust dan efisien.
+        </p>
+        <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+          Selain itu, saya juga berpengalaman sebagai fullstack developer untuk aplikasi Laravel, membangun 
+          aplikasi web yang kompleks dengan fitur-fitur modern menggunakan Livewire dan Inertia.js.
+        </p>
+      </div>
+      
+      <!-- Skills Section -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center text-zinc-900 dark:text-zinc-100">
+          {t('about.skills')}
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {Object.entries(skills).map(([category, items]) => (
+            <div class="glass rounded-xl p-6">
+              <h3 class="text-xl font-semibold mb-4 capitalize text-zinc-900 dark:text-zinc-100">
+                {category}
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {items.map((skill) => (
+                  <span class="px-3 py-1 bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

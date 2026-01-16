@@ -1,0 +1,64 @@
+---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+  <!-- Animated Background -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-float" style="animation-delay: 1s;"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="animate-fadeInUp">
+      <p class="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-4">
+        {t('hero.greeting')}
+      </p>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
+        <span class="gradient-text">Hermansyah</span>
+      </h1>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-zinc-800 dark:text-zinc-200 mb-8">
+        {t('hero.title')}
+      </h2>
+      <p class="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto mb-12">
+        {t('hero.description')}
+      </p>
+      
+      <!-- Tech Stack Badges -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        {['Golang', 'Python', 'Rust', 'Laravel', 'PHP'].map((tech) => (
+          <span class="px-4 py-2 glass rounded-full text-sm font-medium">
+            {tech}
+          </span>
+        ))}
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={getLocalizedPath('/projects', lang)}
+          class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+        >
+          {t('hero.cta.projects')}
+        </a>
+        <a
+          href={getLocalizedPath('/contact', lang)}
+          class="px-8 py-4 glass font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+        >
+          {t('hero.cta.contact')}
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>

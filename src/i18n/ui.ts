@@ -1,0 +1,53 @@
+export const languages = {
+    id: 'Bahasa Indonesia',
+    en: 'English',
+};
+
+export const defaultLang = 'id';
+
+export const ui = {
+    id: {
+        'nav.home': 'Beranda',
+        'nav.projects': 'Proyek',
+        'nav.about': 'Tentang',
+        'nav.contact': 'Kontak',
+        'hero.greeting': 'Halo, saya',
+        'hero.title': 'Backend & Fullstack Developer',
+        'hero.description': 'Saya adalah seorang backend developer yang berpengalaman dengan Golang, Python, dan Rust, serta fullstack developer untuk aplikasi Laravel.',
+        'hero.cta.projects': 'Lihat Proyek',
+        'hero.cta.contact': 'Hubungi Saya',
+        'projects.title': 'Proyek Saya',
+        'projects.featured': 'Proyek Unggulan',
+        'projects.all': 'Semua Proyek',
+        'projects.viewAll': 'Lihat Semua Proyek',
+        'projects.viewDetails': 'Lihat Detail',
+        'about.title': 'Tentang Saya',
+        'about.skills': 'Keahlian',
+        'about.experience': 'Pengalaman',
+        'contact.title': 'Hubungi Saya',
+        'contact.description': 'Tertarik untuk berkolaborasi? Jangan ragu untuk menghubungi saya.',
+        'footer.rights': 'Hak Cipta Dilindungi',
+    },
+    en: {
+        'nav.home': 'Home',
+        'nav.projects': 'Projects',
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'hero.greeting': 'Hi, I\'m',
+        'hero.title': 'Backend & Fullstack Developer',
+        'hero.description': 'I am an experienced backend developer with Golang, Python, and Rust, as well as a fullstack developer for Laravel applications.',
+        'hero.cta.projects': 'View Projects',
+        'hero.cta.contact': 'Contact Me',
+        'projects.title': 'My Projects',
+        'projects.featured': 'Featured Projects',
+        'projects.all': 'All Projects',
+        'projects.viewAll': 'View All Projects',
+        'projects.viewDetails': 'View Details',
+        'about.title': 'About Me',
+        'about.skills': 'Skills',
+        'about.experience': 'Experience',
+        'contact.title': 'Contact Me',
+        'contact.description': 'Interested in collaborating? Feel free to reach out.',
+        'footer.rights': 'All Rights Reserved',
+    },
+} as const;
