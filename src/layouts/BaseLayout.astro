@@ -13,6 +13,8 @@ const {
   image = "/og-image.jpg",
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -52,7 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
 
     <!-- Global Styles -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <!-- Imported via ESM in frontmatter -->
 
     <!-- Dark Mode Script (runs before page load to prevent flash) -->
     <script is:inline>

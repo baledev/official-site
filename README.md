@@ -1,4 +1,4 @@
-# Baledev Portfolio Website
+# Pusakadev Portfolio Website
 
 Modern, fast, and SEO-friendly portfolio website built with Astro, featuring multilingual support (Indonesian/English) and markdown-based content management.
 

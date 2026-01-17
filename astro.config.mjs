@@ -6,9 +6,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://baledev.com', // Update with your actual domain
+  site: 'https://pusakadev.com', // Update with your actual domain
   output: 'static',
-  
+
   i18n: {
     defaultLocale: 'id',
     locales: ['id', 'en'],
@@ -16,7 +16,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  
+
   vite: {
     plugins: [tailwindcss()]
   },
