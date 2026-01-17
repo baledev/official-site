@@ -9,6 +9,7 @@ export const ui = {
     id: {
         'nav.home': 'Beranda',
         'nav.projects': 'Proyek',
+        'nav.blog': 'Blog',
         'nav.about': 'Tentang',
         'nav.contact': 'Kontak',
         'hero.greeting': 'Halo, saya',

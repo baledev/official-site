@@ -5,6 +5,7 @@ pubDate: 2026-01-17
 author: "Hermansyah"
 tags: ["general", "astro", "webdev"]
 coverImage: ""
+lang: "en"
 ---
 
 # Hello World!
