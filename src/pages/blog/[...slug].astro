@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
+import Giscus from "../../components/Giscus.astro";
 
 export async function getStaticPaths() {
     // Get all blog posts
@@ -115,11 +116,15 @@ const { Content } = await post.render();
             </header>
 
             <!-- Content -->
-            <div class="prose dark:prose-invert max-w-none prose-lg mx-auto">
+            <div class="prose dark:prose-invert max-w-none mx-auto">
                 <Content />
+            </div>
+
+            <div class="max-w-none mx-auto">
+                <Giscus lang="id" />
             </div>
         </article>
     </main>
-
-    <Footer />
 </BaseLayout>
+
+<Footer />

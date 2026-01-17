@@ -6,7 +6,9 @@ Modern, fast, and SEO-friendly portfolio website built with Astro, featuring mul
 
 - ⚡ **Lightning Fast** - Static HTML generation with Astro
 - 🌍 **Multilingual** - Indonesian (default) and English support
-- 📝 **Markdown Content** - Easy project management with markdown files
+- 📝 **Markdown Content** - Easy project and blog management with markdown files
+- 📰 **Blog Feature** - Technical writing section with syntax highlighting
+- 💬 **Comments System** - Integrated Giscus for GitHub-powered discussions
 - 🎨 **Modern Design** - Tailwind CSS with dark mode support
 - 🔍 **SEO Optimized** - Meta tags, sitemap, and robots.txt
 - 📱 **Fully Responsive** - Mobile-first design approach
@@ -97,6 +99,30 @@ Your project content in markdown...
 2. Create the English version in `src/content/projects/en/` with `lang: "en"`
 
 3. The project will automatically appear on the projects page!
+
+## ✍️ Adding New Blog Posts
+
+1. Create a new markdown file in `src/content/blog/id/` for Indonesian:
+
+```markdown
+---
+title: "Blog Title"
+description: "Brief summary of the article"
+pubDate: 2024-01-17
+author: "Your Name"
+coverImage: "https://example.com/image.jpg"
+tags: ["tech", "tutorial"]
+lang: "id"
+---
+
+# Blog Title
+
+Write your article here...
+```
+
+2. Create the English version in `src/content/blog/en/` with `lang: "en"`.
+
+3. **Comments System**: The blog uses [Giscus](https://giscus.app) for comments. Ensure your GitHub repository is public and Discussions are enabled. Configure the `src/components/Giscus.astro` file with your Repo ID and Category ID.
 
 ## 🌐 Multilingual Support
 
