@@ -73,6 +73,19 @@ const t = useTranslations("id");
                     }
                 </div>
 
+                <!-- Featured Image -->
+                {
+                    project.data.featuredImage && (
+                        <div class="mb-12 rounded-xl overflow-hidden shadow-xl">
+                            <img
+                                src={project.data.featuredImage}
+                                alt={project.data.title}
+                                class="w-full h-auto object-cover"
+                            />
+                        </div>
+                    )
+                }
+
                 <!-- Links -->
                 <div class="flex flex-wrap justify-center gap-4">
                     {
@@ -123,11 +136,34 @@ const t = useTranslations("id");
             </div>
 
             <!-- Content -->
-            <div class="prose dark:prose-invert max-w-none prose-lg">
+            <div class="prose dark:prose-invert max-w-none">
                 <Content />
             </div>
-        </article>
-    </main>
 
-    <Footer />
-</BaseLayout>
+            <!-- Gallery -->
+            {
+                project.data.gallery && project.data.gallery.length > 0 && (
+                    <div class="mt-16 border-t border-zinc-200 dark:border-zinc-800 pt-16">
+                        <h2 class="text-2xl font-bold mb-8">
+                            {t("project.gallery")}
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {project.data.gallery.map((image) => (
+                                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                                    <img
+                                        src={image}
+                                        alt={`${project.data.title} screenshot`}
+                                        class="w-full h-auto object-cover"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            <Footer />
+        </article>
+    </main></BaseLayout
+>

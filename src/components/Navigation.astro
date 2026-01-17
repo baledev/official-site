@@ -40,6 +40,12 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|id)/, "") || "/";
           {t("nav.projects")}
         </a>
         <a
+          href={getLocalizedPath("/blog", lang)}
+          class="hover:text-blue-500 transition-colors"
+        >
+          {t("nav.blog")}
+        </a>
+        <a
           href={getLocalizedPath("/about", lang)}
           class="hover:text-blue-500 transition-colors"
         >
@@ -144,6 +150,12 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|id)/, "") || "/";
         class="block hover:text-blue-500 transition-colors"
       >
         {t("nav.projects")}
+      </a>
+      <a
+        href={getLocalizedPath("/blog", lang)}
+        class="block hover:text-blue-500 transition-colors"
+      >
+        {t("nav.blog")}
       </a>
       <a
         href={getLocalizedPath("/about", lang)}

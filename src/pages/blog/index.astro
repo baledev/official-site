@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection } from "astro:content";
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations("id");
+
+// Get all Indonesian blog posts (assuming 'id' lang for now or filtering if needed)
+// For now, we'll just show all posts or filter by lang if the filename structure indicates it
+// The current setup has `src/content/blog/en/` and `src/content/blog/id/`.
+// `getCollection` returns slug as `en/hello-world` or `id/halo-dunia`.
+
+const allPosts = await getCollection("blog", ({ data }) => {
+    return data.lang === "id";
+});
+
+const posts = allPosts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout
+    title={`Blog - Hermansyah`}
+    description="Tulisan dan pemikiran saya tentang pengembangan web, teknologi, dan tutorial."
+    lang="id"
+>
+    <Navigation />
+
+    <main class="pt-24 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl font-bold mb-4 gradient-text">Blog</h1>
+                <p
+                    class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
+                >
+                    Tulisan, tutorial, dan catatan seputar pengembangan web dan
+                    teknologi.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    posts.map((post) => (
+                        <article class="card-hover bg-white dark:bg-zinc-800 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                            {post.data.coverImage && (
+                                <div class="aspect-video overflow-hidden">
+                                    <img
+                                        src={post.data.coverImage}
+                                        alt={post.data.title}
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    />
+                                </div>
+                            )}
+                            {!post.data.coverImage && (
+                                <div class="aspect-video overflow-hidden bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center">
+                                    <span class="text-4xl">📝</span>
+                                </div>
+                            )}
+
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="mb-4">
+                                    <span class="text-sm text-zinc-500 dark:text-zinc-400">
+                                        {post.data.pubDate.toLocaleDateString(
+                                            "id-ID",
+                                            {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            },
+                                        )}
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-zinc-900 dark:text-zinc-100 line-clamp-2">
+                                    <a
+                                        href={`/blog/${post.slug.split("/")[1]}`}
+                                        class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                    >
+                                        {post.data.title}
+                                    </a>
+                                </h3>
+
+                                <p class="text-zinc-600 dark:text-zinc-400 mb-6 line-clamp-3">
+                                    {post.data.description}
+                                </p>
+
+                                <div class="mt-auto">
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        {post.data.tags.map((tag) => (
+                                            <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300 rounded-full text-xs font-medium">
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <a
+                                        href={`/blog/${post.slug.split("/")[1]}`}
+                                        class="inline-flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors"
+                                    >
+                                        <span>Baca Selengkapnya</span>
+                                        <svg
+                                            class="w-4 h-4 ml-2"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                            />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+
+            {
+                posts.length === 0 && (
+                    <div class="text-center py-20">
+                        <p class="text-zinc-600 dark:text-zinc-400 text-lg">
+                            Belum ada tulisan.
+                        </p>
+                    </div>
+                )
+            }
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>
