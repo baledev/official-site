@@ -11,15 +11,17 @@ const { title, description, techStack, thumbnail, href } = Astro.props;
 ---
 
 <article class="card-hover bg-white dark:bg-zinc-800 rounded-xl overflow-hidden shadow-lg">
-  {thumbnail && (
-    <div class="aspect-video overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20">
+  <div class="aspect-video overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+    {thumbnail ? (
       <img
         src={thumbnail}
         alt={title}
         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
       />
-    </div>
-  )}
+    ) : (
+      <span class="text-6xl grayscale opacity-50">💻</span>
+    )}
+  </div>
   
   <div class="p-6">
     <h3 class="text-2xl font-bold mb-3 text-zinc-900 dark:text-zinc-100">
@@ -44,7 +46,7 @@ const { title, description, techStack, thumbnail, href } = Astro.props;
       href={href}
       class="inline-flex items-center text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-semibold transition-colors"
     >
-      <span>View Details</span>
+      <span>{Astro.url.pathname.includes('/en') ? 'View Details' : 'Lihat Detail'}</span>
       <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
